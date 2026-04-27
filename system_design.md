@@ -13,7 +13,7 @@ The system is designed to support both factual questions like “What events are
 ## High-Level Architecture
 
 ```mermaid
-flowchart TD
+flowchart LR
     subgraph Runtime["Runtime Question-Answering Path"]
         A[User / Browser] --> B[Static Frontend]
         B --> C[Flask API]
