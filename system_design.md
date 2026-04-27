@@ -27,7 +27,7 @@ flowchart TD
         F -.uses.-> I
     end
 
-    subgraph Ingestion["Offline Ingestion / Data Update Path"]
+    subgraph Ingestion["Ingestion / Data Update Path"]
         K[Google Drive / Gmail / Boston Data] --> J[Ingestion Jobs]
         J --> G
         J --> H
