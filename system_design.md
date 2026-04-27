@@ -14,17 +14,24 @@ The system is designed to support both factual questions like “What events are
 
 ```mermaid
 flowchart TD
-    A[User / Browser] --> B[Static Frontend]
-    B --> C[Flask API]
-    C --> D[Chat Orchestrator]
-    D --> E[SQL Pipeline]
-    D --> F[RAG Pipeline]
-    E --> G[(MySQL)]
-    F --> H[(Chroma Vector DB)]
-    D --> I[Gemini Models]
-    J[Ingestion Jobs] --> G
-    J[Ingestion Jobs] --> H
-    K[Google Drive / Gmail / Boston Data] --> J
+    subgraph Runtime["Runtime Question-Answering Path"]
+        A[User / Browser] --> B[Static Frontend]
+        B --> C[Flask API]
+        C --> D[Chat Orchestrator]
+        D --> E[SQL Pipeline]
+        D --> F[RAG Pipeline]
+        E --> G[(MySQL)]
+        F --> H[(Chroma Vector DB)]
+        D -.uses.-> I[Gemini Models]
+        E -.uses.-> I
+        F -.uses.-> I
+    end
+
+    subgraph Ingestion["Offline Ingestion / Data Update Path"]
+        K[Google Drive / Gmail / Boston Data] --> J[Ingestion Jobs]
+        J --> G
+        J --> H
+    end
 ```
 
 ## Main Components
