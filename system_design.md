@@ -28,7 +28,7 @@ flowchart TD
     end
 
     subgraph Ingestion["Ingestion / Data Update Path"]
-        K[Google Drive / Gmail / Boston Data] --> J[Ingestion Jobs]
+        K[Google Drive / Gmail / Boston.gov] --> J[Ingestion Jobs]
         J --> G
         J --> H
     end
